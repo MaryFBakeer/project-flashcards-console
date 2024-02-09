@@ -1,6 +1,13 @@
 const fs = require('fs').promises;
 const inquirer = require('inquirer');
 
+//проверка корректности ответа
+function correctnessResponse(answerUsers, answer) {
+  if (answer === answerUsers) {
+    return answerUsers;
+  }
+}
+
 //выбор тем и возвращение пути к файлу темы
 async function topics() {
   const func = await inquirer.prompt([
