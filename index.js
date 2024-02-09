@@ -60,11 +60,10 @@ async function quizСonclusion(arrObj) {
   }
 }
 
-
 //запуск квиза
 async function start() {
   const path = await topics();
-  const a = await model(path);
+  const a = await digestFile(path);
   console.log(a);
 }
 
