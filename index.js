@@ -32,5 +32,23 @@ async function digestFile(path) {
       correctAnswer: arrAnswer[i][0],
     });
   }
-  // promtO(arrObj);
+  quizСonclusion(arrObj);
+}
+
+async function quizСonclusion(arrObj) {
+  for (let i = 0; i < arrObj.length; i += 1) {
+    const func = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'animal',
+        message: arrObj[i].question,
+        choices: arrObj[i].choices,
+      },
+    ]);
+    if (correctnessResponse(func.animal, arrObj[i].correctAnswer)) {
+      console.log('Круто');
+    } else {
+      console.log('Плохо');
+    }
+  }
 }
