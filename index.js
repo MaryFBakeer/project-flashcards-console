@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const inquirer = require('inquirer');
+const chalk = require('chalk')
 
 //проверка корректности ответа
 function correctnessResponse(answerUsers, answer) {
@@ -19,9 +20,9 @@ async function topics() {
     },
   ]);
   if (func.team === 'Марвел') {
-    return './topics/nighthawk_flashcard_data.txt';
+    return './topics/marvel.txt';
   }
-  return './topics/otter_flashcard_data.txt';
+  return './topics/mems.txt';
 }
 
 // Обработка принятого файла, возвращаем массив объектов
@@ -53,9 +54,9 @@ async function quizСonclusion(arrObj) {
       },
     ]);
     if (correctnessResponse(func.animal, arrObj[i].correctAnswer)) {
-      console.log('Круто');
+      console.log(chalk.bgGreen('А ты умен. ООУУУЕЕЕ!!!'));
     } else {
-      console.log('Плохо');
+      console.log(chalk.bgRed(`Иди учи Промисы. Правильный ответ: ${arrObj[i].correctAnswer}`));
     }
   }
 }
@@ -68,3 +69,4 @@ async function start() {
 }
 
 start();
+
